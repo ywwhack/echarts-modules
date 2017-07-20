@@ -1,19 +1,55 @@
-const fs = require('fs')
-const path = require('path')
-
-const ROOT_PATH = process.cwd()
-const BASE_PATH = path.resolve(ROOT_PATH, 'node_modules/echarts/lib')
-const TRAVALSE_DIRS = ['chart', 'component']
-
-const echartsModules = {}
-TRAVALSE_DIRS.forEach(dir => {
-  const files = fs.readdirSync(path.resolve(BASE_PATH, dir))
-  const dirModules = echartsModules[dir] = echartsModules[dir] || []
-  files.forEach(file => {
-    if (file.slice(-3) === '.js') {
-      dirModules.push(file.slice(0, -3))
-    }
-  })
-})
-
-module.exports = echartsModules
+exports.chart = [
+  'bar',
+  'boxplot',
+  'candlestick',
+  'chord',
+  'custom',
+  'effectScatter',
+  'funnel',
+  'gauge',
+  'graph',
+  'heatmap',
+  'line',
+  'lines',
+  'map',
+  'parallel',
+  'pictorialBar',
+  'pie',
+  'radar',
+  'sankey',
+  'scatter',
+  'themeRiver',
+  'treemap'
+]
+exports.component = [
+  'angleAxis',
+  'axis',
+  'axisPointer',
+  'brush',
+  'calendar',
+  'dataZoom',
+  'dataZoomInside',
+  'dataZoomSelect',
+  'geo',
+  'graphic',
+  'grid',
+  'gridSimple',
+  'legend',
+  'markArea',
+  'markLine',
+  'markPoint',
+  'parallel',
+  'parallelAxis',
+  'polar',
+  'radar',
+  'radiusAxis',
+  'single',
+  'singleAxis',
+  'timeline',
+  'title',
+  'toolbox',
+  'tooltip',
+  'visualMap',
+  'visualMapContinuous',
+  'visualMapPiecewise'
+]

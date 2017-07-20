@@ -4,6 +4,7 @@
   "description": "specific which echarts module can dynamic loaded",
   "main": "index.js",
   "scripts": {
+    "generate": "node generate",
     "release": "np --no-cleanup"
   },
   "repository": {
