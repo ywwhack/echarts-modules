@@ -6,20 +6,38 @@ const BASE_PATH = path.resolve(ROOT_PATH, 'node_modules/echarts/lib')
 const MODULES_PATH = path.resolve(ROOT_PATH, 'index.js')
 const TRAVALSE_DIRS = ['chart', 'component']
 
+// chart && componet both contains below names
+// ['parallel', 'radar']
+// ensure we only include these names once in `exports.types`
+let includeNames = {}
+
 console.log('generating modules to index.js...')
 let output = ''
+let types = 'exports.types = {'
 TRAVALSE_DIRS.forEach(dir => {
   const files = fs.readdirSync(path.resolve(BASE_PATH, dir))
   output += `exports.${dir} = [`
   files.forEach(file => {
     if (file.slice(-3) === '.js') {
-      output += `\n  '${file.slice(0, -3)}',`
+      const filename = file.slice(0, -3)
+      output += `\n  '${filename}',`
+      if (!includeNames[filename]) {
+        types += `\n  ${filename}: '${filename}',`
+        includeNames[filename] = true
+      }
     }
   })
-  // remove last array comma
-  output = output.slice(0, -1)
-  output += `\n]\n`
+  output = addCloseSquare(output, ']')
 })
+types = addCloseSquare(types, '}')
+output += types
+
+function addCloseSquare (str, symbol) {
+  // remove last array comma
+  str = str.slice(0, -1)
+  str += `\n${symbol}\n`
+  return str
+}
 
 fs.writeFileSync(MODULES_PATH, output)
 console.log('index.js generated success!')
