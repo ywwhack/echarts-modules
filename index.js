@@ -19,6 +19,7 @@ exports.chart = [
   'sankey',
   'scatter',
   'themeRiver',
+  'tree',
   'treemap'
 ]
 exports.component = [
@@ -44,7 +45,6 @@ exports.component = [
   'polar',
   'radar',
   'radiusAxis',
-  'single',
   'singleAxis',
   'timeline',
   'title',
@@ -75,6 +75,7 @@ exports.types = {
   sankey: 'sankey',
   scatter: 'scatter',
   themeRiver: 'themeRiver',
+  tree: 'tree',
   treemap: 'treemap',
   angleAxis: 'angleAxis',
   axis: 'axis',
@@ -96,7 +97,6 @@ exports.types = {
   parallelAxis: 'parallelAxis',
   polar: 'polar',
   radiusAxis: 'radiusAxis',
-  single: 'single',
   singleAxis: 'singleAxis',
   timeline: 'timeline',
   title: 'title',
