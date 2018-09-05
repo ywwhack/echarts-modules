@@ -33,6 +33,7 @@ enum Type {
   grid = 'grid',
   gridSimple = 'gridSimple',
   legend = 'legend',
+  legend = 'legendScroll',
   markArea = 'markArea',
   markLine = 'markLine',
   markPoint = 'markPoint',
